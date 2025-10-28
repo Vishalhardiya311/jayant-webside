@@ -5,7 +5,6 @@ import Footer from "./components/Footer";
 import SplashCursor from "./components/SplashCursor";
 import ContactPage from './Pages/Contactpage';
 import ServicesPage from './Pages/Servicespage';
-import { Route } from 'react-router-dom';
 import About from './components/About';
 import Homepage from './components/Homepage';
 
