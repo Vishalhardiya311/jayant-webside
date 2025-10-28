@@ -1,5 +1,4 @@
-import React from 'react'
-import React, { useEffect, useRef } from 'react';
+import React , { useEffect, useRef } from 'react';
 
 interface ColorRGB {
   r: number;
@@ -270,7 +269,7 @@ export default function SplashCursor({
     }
 
     function getUniforms(program: WebGLProgram) {
-      let uniforms: Record<string, WebGLUniformLocation | null> = {};
+      let uniforms: Record<string, WebGLUniformLocation | null > = {};
       const uniformCount = gl.getProgramParameter(program, gl.ACTIVE_UNIFORMS);
       for (let i = 0; i < uniformCount; i++) {
         const uniformInfo = gl.getActiveUniform(program, i);
