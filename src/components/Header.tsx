@@ -1,46 +1,75 @@
-import React from "react";
+import React, { useState } from "react";
 import {
-  FaGithub,
   FaInstagram,
   FaLinkedin,
   FaTwitter,
   FaWhatsapp,
+  FaBars,
+  FaTimes,
 } from "react-icons/fa";
-import { NavLink } from "react-router-dom";
 
 const Header = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
-    <div className="bg-black py-4 flex justify-between items-center">
-      <div className="flex-2 flex">
+    <header className="bg-black py-4 px-4 flex justify-between items-center relative">
+      {/* Left Logo Section */}
+      <div className="flex items-center space-x-2">
         <img
           src="https://res.cloudinary.com/dhze9zwfx/image/upload/v1760451985/WhatsApp_Image_2025-10-06_at_6.10.25_PM_1_utrvnx.jpg"
-          alt=""
-          className="size-20"
+          alt="Logo"
+          className="size-16 md:size-20 rounded-full"
         />
-        <h1 className="text-3xl  py-3 font-[Josefin-Sans] text-white">
+        <h1 className="text-2xl md:text-3xl font-[Josefin-Sans] text-white">
           Jayant Studio
         </h1>
       </div>
-      <ul className="flex-3 items-center justify-center hidden lg:flex text-gray-400 font-[Segoe UI] text-xs -tracking-[-0.1rem]">
-        <li className="px-4 py-5 hover:text-green-500 cursor-pointer">
-          <a href="#home">HOME</a>
-        </li>
-        <li className="px-4 py-5 hover:text-green-500 cursor-pointer">
-          <a href="#gallery">GALLERY</a>
-        </li>
 
-        <li className="px-4 py-5 hover:text-green-500 cursor-pointer">
-          <a href="#services">SERVICES</a>
-        </li>
+      {/* Hamburger Button for Mobile */}
+      <button
+        className="lg:hidden text-white text-2xl"
+        onClick={() => setMenuOpen(!menuOpen)}
+      >
+        {menuOpen ? <FaTimes /> : <FaBars />}
+      </button>
 
-        <li className="px-4 py-5 hover:text-green-500 cursor-pointer">
-          <a href="#aboutpage">ABOUT </a>
+      {/* Navigation Menu */}
+      <ul
+        className={`${
+          menuOpen
+            ? "flex flex-col absolute top-20 left-0 w-full bg-black items-center py-6 space-y-4 z-50"
+            : "hidden"
+        } lg:flex lg:flex-row lg:items-center lg:justify-center lg:static lg:bg-transparent lg:space-x-4 text-gray-400 font-[Segoe UI] text-sm`}
+      >
+        <li className="hover:text-green-500 cursor-pointer">
+          <a href="#home" onClick={() => setMenuOpen(false)}>
+            HOME
+          </a>
         </li>
-        <li className="px-4 py-5 hover:text-green-500 cursor-pointer">
-          <a href="#contactpage">CONTACT</a>
+        <li className="hover:text-green-500 cursor-pointer">
+          <a href="#gallery" onClick={() => setMenuOpen(false)}>
+            GALLERY
+          </a>
+        </li>
+        <li className="hover:text-green-500 cursor-pointer">
+          <a href="#services" onClick={() => setMenuOpen(false)}>
+            SERVICES
+          </a>
+        </li>
+        <li className="hover:text-green-500 cursor-pointer">
+          <a href="#aboutpage" onClick={() => setMenuOpen(false)}>
+            ABOUT
+          </a>
+        </li>
+        <li className="hover:text-green-500 cursor-pointer">
+          <a href="#contactpage" onClick={() => setMenuOpen(false)}>
+            CONTACT
+          </a>
         </li>
       </ul>
-      <div className="flex-1 hidden  lg:flex items-center justify-evenly">
+
+      {/* Social Icons */}
+      <div className="hidden lg:flex items-center justify-evenly space-x-4">
         <a
           href="https://www.linkedin.com/"
           target="_blank"
@@ -74,7 +103,7 @@ const Header = () => {
           <FaTwitter />
         </a>
       </div>
-    </div>
+    </header>
   );
 };
 

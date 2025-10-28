@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 import ServiceCard from "../components/Servicecard";
 
 const ServicesPage: React.FC = () => {
@@ -48,28 +49,61 @@ const ServicesPage: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-black text-white px-6 py-16">
-      <div className="max-w-6xl mx-auto text-center mb-12">
-        <h2 className="text-4xl md:text-5xl font-bold text-blue-400 mb-3">
-          Our Services
-        </h2>
-        <p className="text-gray-400 text-sm md:text-base max-w-2xl mx-auto">
-          We specialize in creating cinematic and timeless visual stories — from
-          aerial drone shots to cinematic weddings.
-        </p>
-      </div>
+    <>
+      {/* ✅ SEO Optimization */}
+      <Helmet>
+        <title>Our Services | Jayant Studio</title>
+        <meta
+          name="description"
+          content="Explore Jayant Studio’s professional services — photography, videography, drone shoots, and cinematic wedding experiences. Capturing your story with art and emotion."
+        />
+        <meta
+          name="keywords"
+          content="Jayant Studio, Photography, Cinematic Shoots, Wedding Photography, Drone Videography, Pre-Wedding Shoot"
+        />
+        <meta name="author" content="Jayant Pal" />
+        <meta
+          property="og:title"
+          content="Jayant Studio | Photography & Cinematic Shoots"
+        />
+        <meta
+          property="og:description"
+          content="We capture timeless visual stories through cinematic photography, videography, and drone shoots."
+        />
+        <meta
+          property="og:image"
+          content="https://res.cloudinary.com/dhze9zwfx/image/upload/v1761592512/P1197189_l09zuv.jpg"
+        />
+        <meta property="og:type" content="website" />
+      </Helmet>
 
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-        {services.map((service, index) => (
-          <ServiceCard
-            key={index}
-            title={service.title}
-            description={service.description}
-            image={service.image}
-          />
-        ))}
-      </div>
-    </div>
+      {/* ✅ Responsive & Accessible Layout */}
+      <section
+        className="min-h-screen bg-black text-white px-4 sm:px-6 md:px-10 py-16"
+        id="services"
+      >
+        <div className="max-w-6xl mx-auto text-center mb-12 px-2">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-blue-400 mb-3">
+            Our Services
+          </h2>
+          <p className="text-gray-400 text-sm sm:text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
+            We specialize in creating cinematic and timeless visual stories —
+            from aerial drone shots to cinematic weddings.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          {services.map((service, index) => (
+            <ServiceCard
+              key={index}
+              title={service.title}
+              description={service.description}
+              image={service.image}
+            />
+          ))}
+        </div>
+      </section>
+    </>
   );
 };
 
